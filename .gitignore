@@ -1,4 +1,5 @@
 .vscode/
 .prettierrc.json
+.prettierignore
 
 mysql_data
