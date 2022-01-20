@@ -9,7 +9,6 @@ services:
     container_name: app-backend
 
     volumes:
-      - ./backend/node_modules
       - ./backend:/app
 
     ports:

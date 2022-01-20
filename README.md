@@ -1,7 +1,7 @@
 # library-service-node.js
 
 - docker-compose -f docker-compose-dev.yml up 을 한후 mysql 컨테너에 데이터를 넣기 위해
-- docker exec 컨테이너ID node input_db 를 입력한다.
+- docker exec (app-backend의 컨테이너ID) node input_db 를 입력한다.
   
 - 컨테이너 정지는 docker-compose -f docker-compose-dev.yml stop을 통해 할 수 있고
 - 다시 시작하기 위해 stop 대신 restart를 작성하면 된다.

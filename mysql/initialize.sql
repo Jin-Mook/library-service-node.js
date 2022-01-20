@@ -3,9 +3,9 @@ create database library_service;
 use library_service;
 CREATE TABLE `Users` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `user_email` varchar(255) NOT NULL,
+  `user_email` varchar(255) NOT NULL UNIQUE,
   `user_password` text NOT NULL,
-  `nickname` int NOT NULL,
+  `nickname` varchar(255) NOT NULL,
   `social_login` varchar(255) DEFAULT "local"
 );
 CREATE TABLE `Book_lists` (
