@@ -34,3 +34,4 @@ jobs:
 
       - name: Lint
         run: npm run lint
+        working-directory: backend
