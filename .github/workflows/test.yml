@@ -19,8 +19,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install packages
+      - name: go backend directory
         run: cd backend
+
+      - name: install packages
         run: npm install
 
       - name: Lint
