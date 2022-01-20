@@ -30,7 +30,7 @@ jobs:
 
       - name: install packages
         run: npm install
-        working-directory: ./temp
+        working-directory: backend
 
       - name: Lint
         run: npm run lint
