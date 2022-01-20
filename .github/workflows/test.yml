@@ -19,6 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: ls2
+        run: ls
+
       - name: go backend directory
         run: cd backend
 
