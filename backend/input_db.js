@@ -3,7 +3,7 @@ const db = require('./test');
 
 const wb = XLSX.readFile('elice_library.xlsx');
 
-datas = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 0 });
+const datas = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 0 });
 
 datas.forEach((data) => {
   console.log(data.id);
