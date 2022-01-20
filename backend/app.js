@@ -2,6 +2,11 @@ const express = require('express');
 const dotenv = require('dotenv');
 const db = require('./test');
 const nunjucks = require('nunjucks');
+const XLSX = require('xlsx');
+
+const wb = XLSX.readFile('elice_library.xlsx');
+
+datas = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 0 });
 
 dotenv.config();
 
@@ -20,8 +25,8 @@ app.use(express.json());
 // db에서 select하는 기본 api 설계
 app.get('/', (req, res, next) => {
   console.log('api 전달');
-  db.pool.query('select * from lists;', (error, results, fileds) => {
-    if (error) return res.status(500).send(err);
+  db.pool.query('select * from Book_lists;', (error, results, fileds) => {
+    if (error) return res.status(500).send(error);
     else return res.render('main.html', { texts: results });
   });
 });
@@ -29,10 +34,13 @@ app.get('/', (req, res, next) => {
 // db에 insert하는 기본 api 설계
 app.post('/', (req, res, next) => {
   console.log(req.body.text);
-  db.pool.query(`insert into lists (text) values ("${req.body.text}")`, (error, results, fileds) => {
-    if (error) return res.status(500).send(error);
-    else return res.json({ success: true, value: req.body.text });
-  });
+  db.pool.query(
+    `insert into Book_lists (id, book_name, publisher, author, publication_date, pages, isbn, description, link, book_image) values ("${req.body.id}", "${req.body.book_name}", "${req.body.publisher}", "${req.body.author}", "${req.body.publication_date}", "${req.body.pages}", "${req.body.isbn}", "${req.body.description}", "${req.body.link}", "${req.body.book_img}")`,
+    (error, results, fileds) => {
+      if (error) return res.status(500).send(error);
+      else return res.json({ success: true, value: req.body.text });
+    }
+  );
 });
 
 // 404 에러처리
